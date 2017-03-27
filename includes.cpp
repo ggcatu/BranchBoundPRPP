@@ -26,7 +26,7 @@ class lado {
 
 	bool operator<(lado g){
 
-		return ( win - costo < (g.win-g.costo) ) ;
+		return ( win - costo > (g.win-g.costo) ) ;
 	}
 
 };
@@ -34,20 +34,26 @@ class lado {
 class solucion
 {
 public:
+	vector<int> recorrido;
 	vector<lado> camino;
 	int beneficio;
-	solucion():beneficio(0){};
+	solucion():beneficio(0){
+		recorrido.push_back(1);
+	};
 	
 	void agregar(lado e){
+		recorrido.push_back(e.vertex);
 		beneficio += e.win - e.costo;
 		camino.push_back(e);
 	}
 
-	void eliminarUL(){
+	lado eliminarUL(){
 		if(!camino.empty()){
+			recorrido.pop_back();
 			lado l = camino.back();
 			beneficio -= l.win - l.costo;
     		camino.pop_back();
+    		return l;
 		} 
 	}
 
@@ -59,12 +65,67 @@ public:
 		}
 	}
 
+	int esta_veces(lado e){
+		int tmp = 0;
+		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i) {
+			if ( i->vertex == e.vertex && i->index == e.index ){
+				tmp++;
+			} else if (  i->vertex == e.index && i->index == e.vertex  ){
+				tmp++;
+			}
+		}
+		return tmp;
+	}
+
+	lado esta_lado(lado e){
+		int tmp = 0;
+		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i) {
+			if ( i->vertex == e.vertex && i->index == e.index ){
+				return (*i);
+			}
+		}
+	}
+
+	bool esta_sol_parcial(lado e){
+		int vcs = esta_veces(e);
+		if (vcs == 0){
+			return false;
+		} else if (vcs == 1) {
+			lado l = esta_lado(e);
+			if(l.win == 0){
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	}
+
+	bool cargar_solucion(char * nombre){
+		int temp;
+		bool failed = false;
+		string line;
+		ifstream in(nombre);
+		cin.rdbuf(in.rdbuf());
+		cin >> beneficio;
+		cin >> line;
+		getline(cin, line);
+		cout << endl;
+		recorrido.push_back(1);
+		stringstream ss(line);
+		while(ss>>temp && !ss.eof()){
+			recorrido.push_back(temp);
+		}
+		recorrido.push_back(1);
+	}
+
 	bool print(){
 		cout << "Imprimiendo solucion: " << endl;
 		vector<lado>::iterator end = --camino.end();
 		cout << "Beneficio: " << beneficio << endl;  
 		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i){
-			cout << (*i).index << " " ;
+			cout << (*i).index << " " << " * " << i->win - i->costo << endl;
 			if (i == end){
 				cout << (*i).vertex << endl;
 			}
@@ -72,6 +133,8 @@ public:
 	}
 	
 	bool cumple_acotamiento(lado e, int b_disponible, int b_mejor_sol){
+		//cout << "Beneficio Disponible " << b_disponible <<endl;
+		//cout << "Mejor Solucion " << b_mejor_sol <<endl;
 		int b = e.win - e.costo;
 		int b_parcial = beneficio + b;
 		int max_beneficio = b_disponible - max(0, b) + b_parcial;
@@ -81,7 +144,7 @@ public:
 
 	lado * ciclo(lado e){
 		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i){
-			if( (*i).vertex == e.vertex ) {
+			if( (*i).index == e.vertex ) {
 				return &(*i);
 			}
 		}
@@ -89,12 +152,13 @@ public:
 	}
 
 	bool repite_ciclo(lado e){
-		// PORQUE EN EL ENUNCIADO ESTA LISTA(V)?
 		lado * r = ciclo(e);
 		if (r != NULL ){
 			if ( (e.win - e.costo) < (r->win - r->costo) ){
-				return false;
-			} else { return true; }
+				return true;
+			} else { 
+				return false; 
+			}
 		} 
 		return false;
 	}
@@ -146,6 +210,7 @@ class vertice{
 		}
 
 		vector<lado> obtener_adj(){
+			// PORQUE ORDENA CADA VEZ QUE AGREGA?
 			vector<lado> temp;
 			lado * g;
 			for (std::vector<lado>::iterator i = adj.begin(); i != adj.end(); ++i) {
@@ -157,6 +222,7 @@ class vertice{
 			}
 
 			sort(temp.begin(), temp.end());
+
 			return temp;
 		}
 

@@ -49,6 +49,7 @@ grafo leer_grafo(){
 		temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
+		beneficio_disp += n4-n3;
 	}
 
 	ladosE = obtener_numero();
@@ -66,29 +67,34 @@ grafo leer_grafo(){
 
 
 void busqueda_en_profundidad(){
+	//sol_parcial->print();
 	vector<lado> v_adj;
 	int v = sol_parcial->verticeExterno();
 	if (v == 1) {
 		if (sol_parcial->beneficio > mejor_solucion->beneficio){
+			sol_parcial->print();
 			mejor_solucion = sol_parcial;
 		}
 	}
 
 	v_adj = g.v[v].obtener_adj();
 	for (vector<lado>::iterator i = v_adj.begin(); i != v_adj.end(); ++i){
-		// if cochino
+		//cout << !sol_parcial->ciclo_negativo(*i) << " ";
+		//cout << !sol_parcial->repite_ciclo(*i) << " ";
+		//cout << sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion->beneficio) << " ";
+		//cout << !sol_parcial->esta_sol_parcial(*i) << endl;
 		if (!sol_parcial->ciclo_negativo(*i) && 
-			sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion->beneficio) &&
-
-			true ){
+			!sol_parcial->repite_ciclo(*i) &&
+			!sol_parcial->esta_sol_parcial(*i) &&
+			sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion->beneficio) ){
+			
 			sol_parcial->agregar(*i);
-			// What ? Ese max ahi esta muy loco
+			beneficio_disp -= max(0, i->win - i->costo);
 			busqueda_en_profundidad();
 		}
-		
 	}
-	sol_parcial->eliminarUL();
-	// What ? Ese max ahi esta muy loco
+	lado e = sol_parcial->eliminarUL();
+	beneficio_disp += max(0, e.win - e.costo);
 }
 
 
@@ -97,17 +103,11 @@ int main(int argc, char const *argv[])
 	ifstream in("Instancias\\D1NoRPP");
 	cin.rdbuf(in.rdbuf());
 	g = leer_grafo();
+	//beneficio_disp = g.maxbeneficio;
+	cout << "Beneficio " << beneficio_disp << endl; 
 	sol_parcial = new solucion();
-	lado r = lado(1,3,15,10);
-	lado t = lado (3,5,15,12);
-	lado p = lado (5,12, 18, 15);
-	lado l = lado (12, 3, 21, 3);
-	sol_parcial->agregar(r);
-	sol_parcial->agregar(t);
-	sol_parcial->agregar(p);
-//	sol_parcial->agregar(l);
-	cout << "Hay ciclo: " << sol_parcial->ciclo_negativo(l) << endl;
-	// Leer solucion inicial
-
+	mejor_solucion = new solucion();
+	mejor_solucion->cargar_solucion("Instancias\\D1NoRPP-salida.txt");
+	busqueda_en_profundidad();
 	return 0;
 }
