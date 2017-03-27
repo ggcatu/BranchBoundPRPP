@@ -46,7 +46,7 @@ grafo leer_grafo(){
 		cin >> n1 >> n2 >> n3 >> n4;
 		temp1 = new lado(n1,n2,n3,n4);
 		temp2 = new lado(n2,n1,n3,n4);
-		temp1->veces = temp2->veces;
+		//temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
 		beneficio_disp += n4-n3;
@@ -57,7 +57,7 @@ grafo leer_grafo(){
 		cin >> n1 >> n2 >> n3 >> n4;
 		temp1 = new lado(n1,n2,n3,n4);
 		temp2 = new lado(n2,n1,n3,n4);
-		temp1->veces = temp2->veces;
+		//temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
 	}
@@ -93,8 +93,12 @@ void busqueda_en_profundidad(){
 			busqueda_en_profundidad();
 		}
 	}
+	while(!v_adj.empty()){
+		v_adj.erase(v_adj.begin());
+	}
 	lado e = sol_parcial->eliminarUL();
 	beneficio_disp += max(0, e.win - e.costo);
+	delete(&e);
 }
 
 

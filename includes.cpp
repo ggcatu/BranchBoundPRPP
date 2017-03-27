@@ -13,7 +13,6 @@ class lado {
 		int win;
 		int * veces;
 		lado(int g, int v, int c, int w) : index(g), vertex(v), costo(c), win(w){
-			veces = new int(0);
 		};
 	
 	int get_costo(){
@@ -212,13 +211,13 @@ class vertice{
 		vector<lado> obtener_adj(){
 			// PORQUE ORDENA CADA VEZ QUE AGREGA?
 			vector<lado> temp;
-			lado * g;
 			for (std::vector<lado>::iterator i = adj.begin(); i != adj.end(); ++i) {
 				temp.push_back(*i);
 				// may lead to leak 
 				// need delet
-				g = new lado(i->index, i->vertex, i->costo, 0);
-				temp.push_back(*g);
+				//g = new lado(i->index, i->vertex, i->costo, 0);
+				lado g(i->index, i->vertex, i->costo, 0) ;
+				temp.push_back(g);
 			}
 
 			sort(temp.begin(), temp.end());
