@@ -1,170 +1,39 @@
 #include <iostream>
 #include <stdio.h>
-#include <queue>
 #include <vector>
-#include <limits>
-#include <algorithm>
 #include <bits/stdc++.h>
-#include <string>
+#include "includes.cpp"
 
 using namespace std;
 
-class lado {
-	public:
-		int vertex;
-		int costo;
-		int win;
-		int * veces;
-		lado(int v, int c, int w) : vertex(v), costo(c), win(w){
-			veces = new int(0);
-		};
-	
-	int get_costo(){
-		if ( !(*veces) ){
-			return -(win - costo);
-		}	
-		else
-			return  costo;
-	}
 
-};
+solucion * sol_parcial;
+solucion * mejor_solucion;
+int beneficio_disp; 
+grafo g;
 
-class vertice{
-	public:
-		int index, distancia;
-		bool conex;
-		vertice * padre;
-		vector<lado> adj;
-		vertice() : conex(0){ padre = NULL;};
-		vertice(int i) : conex(0), index(i){ padre = NULL;};
-
-		void print_adj(){
-			cout << " * " << endl;
-			for (vector<lado>::iterator it = adj.begin(); it != adj.end(); ++it){
-				cout << it->vertex << " " << it->costo << " * " ; 
-			}
-			cout << endl;
-		}
-
-		int return_path(vector<int> * ac){
-			if (padre == NULL){
-				ac->push_back(index);
-				//cout << index << " ";
-				return index;
-			} else {
-				padre->return_path(ac);
-				ac->push_back(index);
-				//cout << index << " ";
-				return index;
-			}
-		}
-
-		void limpiar(){
-			conex = 0;
-			padre = NULL;
-		}
-};
-
-
-
-class grafo {
-	public:
-		vector<vertice> v;
-		vector<int> recorrido;
-		int costo;
-
-		grafo() : costo(0){};
-
-		void resize(int n){
-			v.resize(n);
-		}
-
-		void agregar_recorrido(vector<int> * r){
-			vector<int>::iterator g;
-			g = r->begin();
-			if(!recorrido.empty()){
-				g++;
-			}
-			recorrido.insert( recorrido.end(), g, r->end() );
-		}
-
-		void print_recorrido(){
-			cout << "Recorrido completo: " <<endl;
-			for (vector<int>::iterator it = recorrido.begin(); it != recorrido.end(); ++it){
-				cout << *it << " ";
-			}
-			cout << endl;
-		}
-
-		void limpiar(){
-			for (vector<vertice>::iterator it = v.begin(); it != v.end(); ++it){
-				it->limpiar();
-			}
-		}
-
-		void enumerar(){
-			int n = 0;
-			for (vector<vertice>::iterator it = v.begin(); it != v.end(); ++it){
-				it->index = n++;
-			}
-		}
-
-		void agregar_lado(int nodo, lado r){
-			v[nodo].adj.push_back(r);
-		}
-		
-		lado * buscar_lado(int a, int b){
-			vector<lado> * lista = &(v[a].adj);
-			for (vector<lado>::iterator it = lista->begin(); it != lista->end(); ++it)
-				{
-					if(it->vertex == b) return &(*it);
-				}
-		}
-
-		void recorrer(vector<int> * ac){
-			int r = -1;
-			for ( vector<int>::iterator it = ac->begin(); it != ac->end(); ++it ){
-				cout << *it << " ";
-				if (r != -1){
-					(*buscar_lado(r,*it)->veces)++ ;
-				}
-				r = *it;
-			}
-			cout << endl;
-			agregar_recorrido(ac);
-		}
-};
 
 int obtener_numero(){
 	int numero;
-	string g;
     while(1){
     	cin >> numero;
     	if (cin.fail()){
     		cin.clear();
         	cin.ignore(256,' ');
     	} else {
-    		cout << "what" << endl;
     		return numero;
     	}
     }
 	return numero;
 }
 
-
-
 grafo leer_grafo(){
 	
 	int nodos, ladosR, ladosE;
 	int n1,n2,n3,n4;
-	grafo g,f;
+	grafo g;
 	lado * temp1, * temp2;
 	int * rtmp;
-
-
-
-	ifstream in("Instancias\\D1NoRPP.txt");
-	cin.rdbuf(in.rdbuf());
 	
 	nodos = obtener_numero();
 	cout << "Numero de nodos: " << nodos << endl;
@@ -175,8 +44,8 @@ grafo leer_grafo(){
 	g.enumerar();
 	for(int i = 0; i < ladosR; i++){
 		cin >> n1 >> n2 >> n3 >> n4;
-		temp1 = new lado(n2,n3,n4);
-		temp2 = new lado(n1,n3,n4);
+		temp1 = new lado(n1,n2,n3,n4);
+		temp2 = new lado(n2,n1,n3,n4);
 		temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
@@ -185,8 +54,8 @@ grafo leer_grafo(){
 	ladosE = obtener_numero();
 	for(int i = 0; i < ladosE; i++){
 		cin >> n1 >> n2 >> n3 >> n4;
-		temp1 = new lado(n2,n3,n4);
-		temp2 = new lado(n1,n3,n4);
+		temp1 = new lado(n1,n2,n3,n4);
+		temp2 = new lado(n2,n1,n3,n4);
 		temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
@@ -195,9 +64,50 @@ grafo leer_grafo(){
 	return g;
 }
 
+
+void busqueda_en_profundidad(){
+	vector<lado> v_adj;
+	int v = sol_parcial->verticeExterno();
+	if (v == 1) {
+		if (sol_parcial->beneficio > mejor_solucion->beneficio){
+			mejor_solucion = sol_parcial;
+		}
+	}
+
+	v_adj = g.v[v].obtener_adj();
+	for (vector<lado>::iterator i = v_adj.begin(); i != v_adj.end(); ++i){
+		// if cochino
+		if (!sol_parcial->ciclo_negativo(*i) && 
+			sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion->beneficio) &&
+
+			true ){
+			sol_parcial->agregar(*i);
+			// What ? Ese max ahi esta muy loco
+			busqueda_en_profundidad();
+		}
+		
+	}
+	sol_parcial->eliminarUL();
+	// What ? Ese max ahi esta muy loco
+}
+
+
 int main(int argc, char const *argv[])
 {
-	grafo g = leer_grafo();
-	g.v[0].print_adj();
+	ifstream in("Instancias\\D1NoRPP");
+	cin.rdbuf(in.rdbuf());
+	g = leer_grafo();
+	sol_parcial = new solucion();
+	lado r = lado(1,3,15,10);
+	lado t = lado (3,5,15,12);
+	lado p = lado (5,12, 18, 15);
+	lado l = lado (12, 3, 21, 3);
+	sol_parcial->agregar(r);
+	sol_parcial->agregar(t);
+	sol_parcial->agregar(p);
+//	sol_parcial->agregar(l);
+	cout << "Hay ciclo: " << sol_parcial->ciclo_negativo(l) << endl;
+	// Leer solucion inicial
+
 	return 0;
 }
