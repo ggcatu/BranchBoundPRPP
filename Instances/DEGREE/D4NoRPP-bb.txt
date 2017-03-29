@@ -1,0 +1,106 @@
+Evaluando ./Instances\DEGREE\D4NoRPP
+Solucion inicial: ./Instances\DEGREE\D4NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 120
+1  * -11
+10  * 99
+11  * -25
+9  * -15
+12  * -23
+2  * 68
+4  * -30
+3  * -42
+14  * 2
+15  * 42
+13  * -12
+7  * 38
+5  * 4
+6  * 79
+8  * 32
+7  * -2
+6  * -36
+5  * -48
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 152
+1  * -11
+10  * 99
+11  * -25
+9  * -15
+12  * -23
+2  * 68
+4  * -30
+3  * -42
+14  * 2
+15  * 42
+13  * -12
+7  * 32
+8  * 79
+6  * -2
+7  * 38
+5  * -48
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 161
+1  * -11
+10  * 99
+11  * -25
+9  * -15
+12  * -23
+2  * 68
+4  * -31
+14  * 2
+15  * 42
+13  * -12
+7  * 38
+5  * 4
+6  * 79
+8  * 32
+7  * -2
+6  * -36
+5  * -48
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 193
+1  * -11
+10  * 99
+11  * -25
+9  * -15
+12  * -23
+2  * 68
+4  * -31
+14  * 2
+15  * 42
+13  * -12
+7  * 32
+8  * 79
+6  * -2
+7  * 38
+5  * -48
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 210
+1  * -11
+10  * 99
+11  * -46
+2  * 68
+4  * -31
+14  * 2
+15  * 42
+13  * -12
+7  * 32
+8  * 79
+6  * -2
+7  * 38
+5  * -48
+1
+Mejor solucion encontrada!
+Beneficio: 210
+d 10 11 2 4 14 15 13 7 8 6 7 5 d 
+Time taken: 0.47s

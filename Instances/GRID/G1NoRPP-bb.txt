@@ -1,0 +1,7 @@
+Evaluando ./Instances\GRID\G1NoRPP
+Solucion inicial: ./Instances\GRID\G1NoRPP-salida.txt
+
+Mejor solucion encontrada!
+Beneficio: 0
+d d 
+Time taken: 0.06s

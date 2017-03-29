@@ -1,0 +1,44 @@
+Evaluando ./Instances\CHRISTOFIDES\P10NoRPP
+Solucion inicial: ./Instances\CHRISTOFIDES\P10NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 39
+1  * 16
+2  * 5
+3  * 0
+1  * -1
+4  * 6
+5  * -3
+2  * -2
+11  * 2
+12  * 4
+10  * -4
+12  * -1
+9  * 4
+8  * 17
+7  * 3
+6  * -7
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 41
+1  * 16
+2  * 5
+3  * 0
+1  * -1
+4  * 6
+5  * -3
+2  * -2
+11  * 0
+10  * 4
+12  * -1
+9  * 4
+8  * 17
+7  * 3
+6  * -7
+1
+Mejor solucion encontrada!
+Beneficio: 41
+d 2 3 d 4 5 2 11 10 12 9 8 7 6 d 
+Time taken: 1.25s

@@ -1,0 +1,7 @@
+Evaluando ./Instances\CHRISTOFIDES\P12NoRPP
+Solucion inicial: ./Instances\CHRISTOFIDES\P12NoRPP-salida.txt
+
+Mejor solucion encontrada!
+Beneficio: 10
+d 7 6 5 4 3 2 d 
+Time taken: 0.01s

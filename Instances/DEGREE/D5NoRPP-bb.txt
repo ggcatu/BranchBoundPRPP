@@ -1,0 +1,28 @@
+Evaluando ./Instances\DEGREE\D5NoRPP
+Solucion inicial: ./Instances\DEGREE\D5NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 313
+1  * 68
+4  * -9
+2  * 97
+3  * -25
+5  * 110
+8  * 28
+6  * 48
+5  * -38
+3  * 4
+1  * 62
+2  * -32
+1
+Beneficio: 54
+d 4 2 d 10 12 9 10 11 15 13 14 
+Beneficio: 44
+d 2 4 d 3 5 6 7 13 14 15 11 12 9 10 11 
+Beneficio: 1
+d 2 3 5 6 8 7 14 15 11 10 9 
+Mejor solucion encontrada!
+Beneficio: 313
+d 4 2 3 5 8 6 5 3 d 2 d 
+Time taken: 20.12s

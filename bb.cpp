@@ -15,6 +15,8 @@ grafo g;
 int i = 0;
 double tiempo = 0;
 clock_t tStart;
+#define TLIMIT 1200
+
 
 int obtener_numero(ifstream& in){
 	int numero;
@@ -69,7 +71,7 @@ grafo leer_grafo(ifstream& in){
 
 void busqueda_en_profundidad(){
 	tiempo = (double)(clock() - tStart)/CLOCKS_PER_SEC;
-	if (tiempo > 30){
+	if (tiempo > TLIMIT){
 		return;
 	}
 	i++;
@@ -128,7 +130,7 @@ int main(int argc, char const *argv[])
 
 	busqueda_en_profundidad();
 
-	if (tiempo > 30){
+	if (tiempo > TLIMIT){
 		cout << "######### Overtime ############" << endl;
 	}
 	cout << "Mejor solucion encontrada!" << endl;

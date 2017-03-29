@@ -1,0 +1,3 @@
+Evaluando ./Instances\DEGREE\D11NoRPP
+Solucion inicial: ./Instances\DEGREE\D11NoRPP-salida.txt
+

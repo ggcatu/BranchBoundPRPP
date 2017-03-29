@@ -1,0 +1,42 @@
+Evaluando ./Instances\DEGREE\D1NoRPP
+Solucion inicial: ./Instances\DEGREE\D1NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 109
+1  * -28
+3  * -12
+11  * -5
+2  * 68
+4  * -27
+3  * -46
+14  * 97
+15  * 22
+13  * -28
+7  * 82
+8  * 41
+6  * -2
+7  * 5
+5  * -58
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 115
+1  * -28
+3  * -12
+11  * -5
+2  * 68
+4  * -67
+14  * 97
+15  * 22
+13  * -28
+7  * 82
+8  * 41
+6  * -2
+7  * 5
+5  * -58
+1
+Mejor solucion encontrada!
+Beneficio: 115
+d 3 11 2 4 14 15 13 7 8 6 7 5 d 
+Time taken: 0.84s

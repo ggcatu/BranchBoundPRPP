@@ -1,0 +1,9 @@
+Evaluando ./Instances\GRID\G7NoRPP
+Solucion inicial: ./Instances\GRID\G7NoRPP-salida.txt
+
+Beneficio: -6
+d 5 6 10 11 15 16 12 8 7 
+Mejor solucion encontrada!
+Beneficio: 1
+d 5 9 10 14 15 16 12 11 7 6 5 d 
+Time taken: 7.60s

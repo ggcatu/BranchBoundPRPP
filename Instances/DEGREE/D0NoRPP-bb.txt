@@ -1,0 +1,7 @@
+Evaluando ./Instances\DEGREE\D0NoRPP
+Solucion inicial: ./Instances\DEGREE\D0NoRPP-salida.txt
+
+Mejor solucion encontrada!
+Beneficio: 109
+d 3 4 d 
+Time taken: 0.00s

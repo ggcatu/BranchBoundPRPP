@@ -1,0 +1,183 @@
+Evaluando ./Instances\CHRISTOFIDES\P09NoRPP
+Solucion inicial: ./Instances\CHRISTOFIDES\P09NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 46
+1  * 4
+2  * 5
+4  * 5
+5  * -2
+14  * 15
+13  * 2
+12  * -3
+10  * 6
+9  * 1
+7  * 0
+8  * 1
+9  * 10
+6  * 12
+11  * -3
+13  * -3
+5  * -3
+3  * 2
+4  * -1
+3  * 0
+2  * -2
+1
+Beneficio: 48
+d 2 4 5 14 10 11 6 9 7 8 9 10 11 13 14 12 13 
+Beneficio: 30
+d 2 4 5 6 9 7 9 8 10 9 11 10 14 13 12 
+Beneficio: 8
+d 2 4 5 13 12 14 10 11 9 8 10 9 7 8 
+Beneficio: 33
+d 2 4 5 6 9 11 10 14 13 12 10 8 9 10 
+Beneficio: 36
+d 2 4 5 11 10 12 13 14 10 11 9 8 7 9 6 11 
+Beneficio: 19
+d 2 4 3 4 5 14 10 9 11 6 11 10 8 7 9 8 
+Beneficio: 43
+d 2 4 3 4 5 13 14 10 11 6 9 8 7 9 11 10 9 11 
+Beneficio: 38
+d 2 4 3 4 5 14 13 12 10 11 9 6 11 10 8 7 9 8 
+Beneficio: 17
+d 2 4 3 5 14 13 12 10 9 11 10 8 
+Beneficio: 20
+d 2 4 3 5 14 13 12 10 11 9 10 8 7 9 8 
+Beneficio: 39
+d 2 4 3 5 14 13 12 10 9 7 8 10 11 6 9 
+Beneficio: 21
+d 2 4 3 5 11 9 8 7 9 10 11 13 14 5 4 
+Beneficio: 26
+d 2 4 5 6 9 8 7 9 10 14 13 11 
+Beneficio: 25
+d 2 3 4 2 d 4 3 5 6 11 10 8 9 7 9 10 11 9 6 
+Beneficio: 19
+d 2 3 4 2 3 5 14 13 12 10 8 7 9 10 11 9 
+Beneficio: 23
+d 2 3 4 5 14 13 12 14 10 11 6 5 
+Beneficio: 25
+d 2 3 4 5 14 10 8 9 11 10 9 6 11 10 12 
+Beneficio: 33
+d 2 3 4 5 13 14 10 8 7 9 6 11 9 10 11 13 12 
+Beneficio: 31
+d 2 3 4 5 6 11 9 6 9 7 9 10 8 9 
+Beneficio: 27
+d 2 3 4 5 14 12 13 11 10 9 7 9 6 11 9 8 7 
+Beneficio: 16
+d 2 3 4 3 5 14 13 11 10 8 9 10 11 9 7 8 
+Beneficio: 6
+d 2 3 4 3 5 13 12 10 8 7 9 11 6 
+Beneficio: 18
+d 2 3 4 2 3 4 5 6 11 10 9 8 7 9 10 11 13 
+Beneficio: 41
+d 2 3 4 5 14 13 5 6 9 7 9 11 10 9 8 10 11 6 
+Beneficio: 28
+d 2 3 4 5 6 9 8 7 9 11 10 9 7 8 10 11 6 
+Beneficio: 32
+d 2 3 4 5 6 11 13 14 10 9 8 7 9 11 13 12 
+Beneficio: 3
+d 2 3 4 5 13 12 10 11 9 7 8 10 9 7 
+Beneficio: 23
+d 2 3 5 6 9 7 9 10 11 9 8 10 11 13 12 14 13 
+Beneficio: 16
+d 2 3 5 4 2 3 4 3 5 6 9 10 8 9 
+Beneficio: -4
+d 2 3 5 11 10 8 7 9 10 11 9 8 
+Beneficio: 17
+d 2 d 4 2 3 4 5 14 13 12 10 8 9 7 8 
+Beneficio: 8
+d 2 d 4 3 5 6 11 10 9 8 7 9 
+Beneficio: 27
+d 2 d 4 2 3 4 5 13 11 6 9 10 11 9 7 
+Beneficio: 32
+d 2 3 4 2 d 4 5 14 13 11 10 9 6 
+Beneficio: 39
+d 2 3 4 5 13 14 10 8 9 6 11 10 8 7 9 10 11 9 
+Beneficio: 32
+d 2 3 4 2 3 4 5 6 9 11 10 9 8 10 14 13 
+Beneficio: 23
+d 2 3 5 6 11 13 14 10 11 9 7 8 10 9 8 
+Beneficio: 19
+d 2 4 3 4 5 14 10 11 9 7 8 9 6 11 10 8 
+Beneficio: 19
+d 2 4 5 6 9 7 9 8 10 11 13 14 10 11 
+Beneficio: 19
+d 2 4 5 14 12 10 11 6 9 7 8 9 7 
+Beneficio: 26
+d 2 4 3 4 5 13 12 14 10 9 10 11 6 9 11 10 
+Beneficio: 25
+d 2 4 3 5 11 6 9 7 9 8 10 9 11 
+Beneficio: 2
+d 2 3 4 2 d 4 5 6 9 8 7 9 
+Beneficio: 12
+d 2 3 4 5 14 10 9 6 11 9 7 8 10 12 13 
+Beneficio: 10
+d 2 3 4 5 6 11 9 8 10 9 7 8 10 14 5 
+Beneficio: 20
+d 2 3 4 3 5 14 12 13 14 10 9 11 10 8 7 9 6 
+Beneficio: 33
+d 2 3 4 5 6 9 10 8 9 7 9 11 6 5 14 13 
+Beneficio: 24
+d 2 3 5 14 10 11 6 9 8 7 9 10 12 13 5 4 2 
+Beneficio: 27
+d 2 3 4 5 6 9 7 8 9 10 12 13 14 5 
+Beneficio: 41
+d 4 2 d 2 3 4 5 14 13 11 6 9 7 8 9 10 11 
+Beneficio: 35
+d 4 2 d 4 5 14 13 11 9 7 8 9 10 11 6 5 
+Beneficio: 41
+d 4 2 3 4 5 14 13 12 10 8 7 9 10 11 6 9 
+Beneficio: 32
+d 4 2 3 4 5 11 9 6 11 10 9 7 8 
+Beneficio: 16
+d 4 2 3 4 5 14 13 11 10 8 9 10 11 
+Beneficio: 8
+d 4 2 3 4 5 13 11 9 10 8 9 7 8 
+Beneficio: 25
+d 4 5 6 9 10 9 7 9 11 6 
+Beneficio: 43
+d 4 3 2 4 5 14 13 11 10 9 6 11 10 9 8 7 9 7 
+Beneficio: 19
+d 4 3 2 4 5 11 10 12 13 14 10 9 8 7 
+Beneficio: 35
+d 4 3 2 d 4 5 13 12 10 11 6 9 8 7 9 11 13 14 
+Beneficio: 28
+d 4 3 4 5 6 11 10 12 13 14 10 9 7 8 9 11 10 
+Beneficio: 9
+d 4 3 5 14 13 11 10 9 8 7 9 11 10 12 
+Beneficio: 43
+d 4 3 2 4 5 14 13 12 10 11 6 9 8 7 9 10 11 9 
+Beneficio: 24
+d 4 3 2 4 5 11 6 9 8 7 9 11 10 9 7 
+Beneficio: 16
+d 4 2 d 2 3 4 5 14 13 11 10 8 7 9 11 
+Beneficio: 36
+d 4 2 d 4 5 14 10 11 9 7 9 6 11 13 14 
+Beneficio: 7
+d 4 2 3 4 5 13 11 9 10 9 7 8 9 
+Beneficio: 26
+d 4 2 3 4 5 6 11 13 12 10 9 8 10 11 9 6 
+Beneficio: 44
+d 4 2 d 4 3 4 5 14 13 12 10 9 8 7 9 6 11 10 
+Beneficio: 17
+d 4 5 14 10 9 7 9 11 6 9 11 10 
+Beneficio: 22
+d 4 5 14 10 11 6 9 11 10 9 7 8 10 12 13 
+Beneficio: 30
+d 4 3 2 4 5 13 11 10 9 7 9 11 6 5 14 13 
+Beneficio: 30
+d 4 3 2 d 2 4 5 6 9 7 8 10 9 8 10 11 6 
+Beneficio: 9
+d 4 3 4 2 3 5 13 14 10 11 9 7 9 
+Beneficio: 27
+d 4 3 2 4 5 13 11 9 7 8 9 10 11 6 9 
+Beneficio: 13
+d 4 3 2 4 5 6 11 10 9 11 13 5 14 
+Beneficio: 7
+d 4 3 2 d 4 5 13 11 10 8 9 7 9 11 6 
+Mejor solucion encontrada!
+Beneficio: 46
+d 2 4 5 14 13 12 10 9 7 8 9 6 11 13 5 3 4 3 2 d 
+Time taken: 679.31s

@@ -1,0 +1,7 @@
+Evaluando ./Instances\CHRISTOFIDES\P13NoRPP
+Solucion inicial: ./Instances\CHRISTOFIDES\P13NoRPP-salida.txt
+
+Mejor solucion encontrada!
+Beneficio: 5
+d 2 3 4 5 d 
+Time taken: 0.00s
