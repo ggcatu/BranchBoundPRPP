@@ -101,15 +101,15 @@ public:
 		}
 	}
 
-	bool cargar_solucion(const char * nombre){
+	bool cargar_solucion(ifstream& ine){
 		int temp;
 		bool failed = false;
 		string line;
-		ifstream in(nombre);
-		cin.rdbuf(in.rdbuf());
-		cin >> beneficio;
-		cin >> line;
-		getline(cin, line);
+		//ifstream in(nombre);
+		//cin.rdbuf(in.rdbuf());
+		ine >> beneficio;
+		ine >> line;
+		getline(ine, line);
 		cout << endl;
 		stringstream ss(line);
 		while(ss>>temp && !ss.eof()){

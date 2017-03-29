@@ -13,14 +13,16 @@ solucion mejor_solucion;
 int beneficio_disp = 0; 
 grafo g;
 int i = 0;
+double tiempo = 0;
+clock_t tStart;
 
-int obtener_numero(){
+int obtener_numero(ifstream& in){
 	int numero;
     while(1){
-    	cin >> numero;
-    	if (cin.fail()){
-    		cin.clear();
-        	cin.ignore(256,' ');
+    	in >> numero;
+    	if (in.fail()){
+    		in.clear();
+        	in.ignore(256,' ');
     	} else {
     		return numero;
     	}
@@ -28,7 +30,7 @@ int obtener_numero(){
 	return numero;
 }
 
-grafo leer_grafo(){
+grafo leer_grafo(ifstream& in){
 	
 	int nodos, ladosR, ladosE;
 	int n1,n2,n3,n4;
@@ -36,15 +38,15 @@ grafo leer_grafo(){
 	lado * temp1, * temp2;
 	int * rtmp;
 	
-	nodos = obtener_numero();
+	nodos = obtener_numero(in);
 	//cout << "Numero de nodos: " << nodos << endl;
-	ladosR = obtener_numero();
+	ladosR = obtener_numero(in);
 	//cout << "Lados R: " << ladosR << endl;
 
 	g.resize(nodos+1);
 	//g.enumerar();
 	for(int i = 0; i < ladosR; i++){
-		cin >> n1 >> n2 >> n3 >> n4;
+		in >> n1 >> n2 >> n3 >> n4;
 		temp1 = new lado(n1,n2,n3,n4);
 		temp2 = new lado(n2,n1,n3,n4);
 		g.agregar_lado(n1,*temp1);
@@ -52,9 +54,9 @@ grafo leer_grafo(){
 		beneficio_disp += n4-n3;
 	}
 
-	ladosE = obtener_numero();
+	ladosE = obtener_numero(in);
 	for(int i = 0; i < ladosE; i++){
-		cin >> n1 >> n2 >> n3 >> n4;
+		in >> n1 >> n2 >> n3 >> n4;
 		temp1 = new lado(n1,n2,n3,n4);
 		temp2 = new lado(n2,n1,n3,n4);
 		g.agregar_lado(n1,*temp1);
@@ -66,6 +68,10 @@ grafo leer_grafo(){
 
 
 void busqueda_en_profundidad(){
+	tiempo = (double)(clock() - tStart)/CLOCKS_PER_SEC;
+	if (tiempo > 30){
+		return;
+	}
 	i++;
 	if (i % 500000 == 0){
 		sol_parcial->print_recorrido();
@@ -103,30 +109,28 @@ void busqueda_en_profundidad(){
 
 
 int main(int argc, char const *argv[])
-{
-
-	clock_t tStart = clock();
+{	
     if (! (argc > 1 )) return 1;
+ 	tStart = clock();
     string instance(argv[1]);
     string initial(instance + string("-salida.txt"));
     cout << "Evaluando " << argv[1] << endl;
     cout << "Solucion inicial: " << initial << endl; 
+
+	//streambuf *cinbuf = std::cin.rdbuf(); //save old buf
 	ifstream in(argv[1]);
-
-	cin.rdbuf(in.rdbuf());
-	g = leer_grafo();
-	//beneficio_disp = g.maxbeneficio;
-	//cout << "Beneficio " << beneficio_disp << endl; 
+	//cin.rdbuf(in.rdbuf());
+	ifstream in_sol(initial.c_str());
+	g = leer_grafo(in);
 	sol_parcial = new solucion();
-	//mejor_solucion = new solucion();
-	mejor_solucion.cargar_solucion(initial.c_str());
-
-	//sol_parcial->agregar(lado(1,3,1,10));
-	//sol_parcial->agregar(lado(3,5,1,10));
-	//sol_parcial->agregar(lado(5,10,1,10));
-	//cout << "Ciclo neg " << sol_parcial->repite_ciclo(lado(10,3,50,1)) << endl;
+	mejor_solucion.cargar_solucion(in_sol);
+	//cin.rdbuf(cinbuf);   //reset to standard input again
 
 	busqueda_en_profundidad();
+
+	if (tiempo > 30){
+		cout << "######### Overtime ############" << endl;
+	}
 	cout << "Mejor solucion encontrada!" << endl;
 	mejor_solucion.print_recorrido();
 	/* Do your stuff here */

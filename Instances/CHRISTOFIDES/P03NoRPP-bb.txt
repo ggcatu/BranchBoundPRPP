@@ -1,0 +1,12 @@
+Evaluando ./Instances\CHRISTOFIDES\P03NoRPP
+Solucion inicial: ./Instances\CHRISTOFIDES\P03NoRPP-salida.txt
+
+Beneficio: 28
+d 2 4 5 4 2 3 22 27 28 23 24 28 22 27 7 9 11 13 14 12 10 8 6 7 5 27 26 25 24 25 15 17 18 21 16 17 
+Beneficio: 31
+d 2 4 5 4 2 3 22 27 28 23 24 28 22 27 7 9 11 13 14 12 10 8 6 5 27 26 25 24 15 21 20 16 17 15 20 19 
+######### Overtime ############
+Mejor solucion encontrada!
+Beneficio: 38
+d 2 4 5 27 22 28 24 25 28 27 7 9 11 13 14 12 10 8 6 5 4 2 d 
+Time taken: 30.00s
