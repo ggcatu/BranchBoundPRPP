@@ -90,8 +90,8 @@ public:
 		if (vcs == 0){
 			return false;
 		} else if (vcs == 1) {
-			lado l = esta_lado(e);
-			if(l.win == 0){
+			//lado l = esta_lado(e);
+			if(e.win == 0){
 				return false;
 			} else {
 				return true;
@@ -101,7 +101,7 @@ public:
 		}
 	}
 
-	bool cargar_solucion(char * nombre){
+	bool cargar_solucion(const char * nombre){
 		int temp;
 		bool failed = false;
 		string line;
@@ -111,7 +111,6 @@ public:
 		cin >> line;
 		getline(cin, line);
 		cout << endl;
-		recorrido.push_back(1);
 		stringstream ss(line);
 		while(ss>>temp && !ss.eof()){
 			recorrido.push_back(temp);
@@ -131,19 +130,38 @@ public:
 		}
 	}
 	
+	void print_recorrido(){
+		cout << "Beneficio: " << beneficio << endl;  
+		for (std::vector<int>::iterator i = recorrido.begin(); i != recorrido.end(); ++i) {
+			if ((*i) == 1){
+				cout << "d ";
+			} else {
+				cout << *i << " ";
+			}
+		}
+		cout << endl;
+	}
+
+	/*
+		Chequeada.
+	*/
 	bool cumple_acotamiento(lado e, int b_disponible, int b_mejor_sol){
-		//cout << "Beneficio Disponible " << b_disponible <<endl;
-		//cout << "Mejor Solucion " << b_mejor_sol <<endl;
 		int b = e.win - e.costo;
 		int b_parcial = beneficio + b;
 		int max_beneficio = b_disponible - max(0, b) + b_parcial;
-		if (max_beneficio <= b_mejor_sol) return false;
+		if (max_beneficio <= b_mejor_sol){
+			return false;
+		};
 		return true;
 	}
 
 	lado * ciclo(lado e){
+		int tmp = 0;
 		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i){
-			if( (*i).index == e.vertex ) {
+			if( (*i).vertex == e.vertex ) {
+				tmp++;
+			} 
+			if (tmp == 2){
 				return &(*i);
 			}
 		}
@@ -151,7 +169,9 @@ public:
 	}
 
 	bool repite_ciclo(lado e){
+		//return false;
 		lado * r = ciclo(e);
+		//cout <<"Se formac ciclo ccon" << r->index << " " << r->vertex << endl;
 		if (r != NULL ){
 			if ( (e.win - e.costo) < (r->win - r->costo) ){
 				return true;
@@ -162,28 +182,29 @@ public:
 		return false;
 	}
 
+	/*
+				Chequeada.
+	*/
 	bool ciclo_negativo(lado e){
-		agregar(e);
 		// PUEDE HACERSE CON UN SOLO CICLO
 		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i){
-			for (std::vector<lado>::iterator j = i; j != camino.end(); ++j){
-				if( (*i).index == (*j).vertex ){
-					vector<lado> ciclo(i,j+1);
-					if (negativo(ciclo)){
-						eliminarUL();
+			if( (*i).index == e.vertex ) {
+				vector<lado> ciclo(i,camino.end());
+				ciclo.push_back(e);
+				if (negativo(ciclo)){
 						return true;
-					}
-				} 
+				}
 			}
 		}
-		eliminarUL();
 		return false;
 	}
 
 	bool negativo(vector<lado> ls){
 		int acum = 0;
 		for (std::vector<lado>::iterator i = ls.begin(); i != ls.end(); ++i) {
+			//cout << "i " << i->index <<  " " << i->vertex << endl;
 			acum += i->win - i->costo;
+			//cout << "acum " << acum << endl;
 		}
 		return acum < 0;
 	}
@@ -208,14 +229,13 @@ class vertice{
 			cout << endl;
 		}
 
+		/*
+				Chequeada.
+		*/
 		vector<lado> obtener_adj(){
-			// PORQUE ORDENA CADA VEZ QUE AGREGA?
 			vector<lado> temp;
 			for (std::vector<lado>::iterator i = adj.begin(); i != adj.end(); ++i) {
 				temp.push_back(*i);
-				// may lead to leak 
-				// need delet
-				//g = new lado(i->index, i->vertex, i->costo, 0);
 				lado g(i->index, i->vertex, i->costo, 0) ;
 				temp.push_back(g);
 			}
@@ -249,68 +269,16 @@ class vertice{
 class grafo {
 	public:
 		vector<vertice> v;
-		vector<int> recorrido;
-		int costo;
 		int maxbeneficio;
 
-		grafo() : costo(0), maxbeneficio(0){};
+		grafo() : maxbeneficio(0){};
 
 		void resize(int n){
 			v.resize(n);
-		}
-
-		void agregar_recorrido(vector<int> * r){
-			vector<int>::iterator g;
-			g = r->begin();
-			if(!recorrido.empty()){
-				g++;
-			}
-			recorrido.insert( recorrido.end(), g, r->end() );
-		}
-
-		void print_recorrido(){
-			cout << "Recorrido completo: " <<endl;
-			for (vector<int>::iterator it = recorrido.begin(); it != recorrido.end(); ++it){
-				cout << *it << " ";
-			}
-			cout << endl;
-		}
-
-		void limpiar(){
-			for (vector<vertice>::iterator it = v.begin(); it != v.end(); ++it){
-				it->limpiar();
-			}
-		}
-
-		void enumerar(){
-			int n = 0;
-			for (vector<vertice>::iterator it = v.begin(); it != v.end(); ++it){
-				it->index = n++;
-			}
 		}
 
 		void agregar_lado(int nodo, lado r){
 			v[nodo].adj.push_back(r);
 		}
 		
-		lado * buscar_lado(int a, int b){
-			vector<lado> * lista = &(v[a].adj);
-			for (vector<lado>::iterator it = lista->begin(); it != lista->end(); ++it)
-				{
-					if(it->vertex == b) return &(*it);
-				}
-		}
-
-		void recorrer(vector<int> * ac){
-			int r = -1;
-			for ( vector<int>::iterator it = ac->begin(); it != ac->end(); ++it ){
-				cout << *it << " ";
-				if (r != -1){
-					(*buscar_lado(r,*it)->veces)++ ;
-				}
-				r = *it;
-			}
-			cout << endl;
-			agregar_recorrido(ac);
-		}
 };

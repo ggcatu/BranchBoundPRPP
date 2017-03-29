@@ -3,15 +3,16 @@
 #include <vector>
 #include <bits/stdc++.h>
 #include "includes.cpp"
+#include <time.h>
 
 using namespace std;
 
 
 solucion * sol_parcial;
-solucion * mejor_solucion;
-int beneficio_disp; 
+solucion mejor_solucion;
+int beneficio_disp = 0; 
 grafo g;
-
+int i = 0;
 
 int obtener_numero(){
 	int numero;
@@ -36,17 +37,16 @@ grafo leer_grafo(){
 	int * rtmp;
 	
 	nodos = obtener_numero();
-	cout << "Numero de nodos: " << nodos << endl;
+	//cout << "Numero de nodos: " << nodos << endl;
 	ladosR = obtener_numero();
-	cout << "Lados R: " << ladosR << endl;
+	//cout << "Lados R: " << ladosR << endl;
 
 	g.resize(nodos+1);
-	g.enumerar();
+	//g.enumerar();
 	for(int i = 0; i < ladosR; i++){
 		cin >> n1 >> n2 >> n3 >> n4;
 		temp1 = new lado(n1,n2,n3,n4);
 		temp2 = new lado(n2,n1,n3,n4);
-		//temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
 		beneficio_disp += n4-n3;
@@ -57,7 +57,6 @@ grafo leer_grafo(){
 		cin >> n1 >> n2 >> n3 >> n4;
 		temp1 = new lado(n1,n2,n3,n4);
 		temp2 = new lado(n2,n1,n3,n4);
-		//temp1->veces = temp2->veces;
 		g.agregar_lado(n1,*temp1);
 		g.agregar_lado(n2,*temp2);
 	}
@@ -67,26 +66,27 @@ grafo leer_grafo(){
 
 
 void busqueda_en_profundidad(){
-	//sol_parcial->print();
+	i++;
+	if (i % 500000 == 0){
+		sol_parcial->print_recorrido();
+	}
 	vector<lado> v_adj;
 	int v = sol_parcial->verticeExterno();
 	if (v == 1) {
-		if (sol_parcial->beneficio > mejor_solucion->beneficio){
+		//cout << "Comparando " << sol_parcial->beneficio << " y " << mejor_solucion->beneficio <<endl;
+		if (sol_parcial->beneficio > mejor_solucion.beneficio){
+			cout << "Nueva solucion parcial!" << endl;
 			sol_parcial->print();
-			mejor_solucion = sol_parcial;
+			mejor_solucion = (*sol_parcial);
 		}
 	}
 
 	v_adj = g.v[v].obtener_adj();
 	for (vector<lado>::iterator i = v_adj.begin(); i != v_adj.end(); ++i){
-		//cout << !sol_parcial->ciclo_negativo(*i) << " ";
-		//cout << !sol_parcial->repite_ciclo(*i) << " ";
-		//cout << sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion->beneficio) << " ";
-		//cout << !sol_parcial->esta_sol_parcial(*i) << endl;
 		if (!sol_parcial->ciclo_negativo(*i) && 
 			!sol_parcial->repite_ciclo(*i) &&
 			!sol_parcial->esta_sol_parcial(*i) &&
-			sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion->beneficio) ){
+			sol_parcial->cumple_acotamiento(*i, beneficio_disp, mejor_solucion.beneficio) ){
 			
 			sol_parcial->agregar(*i);
 			beneficio_disp -= max(0, i->win - i->costo);
@@ -104,14 +104,32 @@ void busqueda_en_profundidad(){
 
 int main(int argc, char const *argv[])
 {
-	ifstream in("Instancias\\D1NoRPP");
+
+	clock_t tStart = clock();
+    if (! (argc > 1 )) return 1;
+    string instance(argv[1]);
+    string initial(instance + string("-salida.txt"));
+    cout << "Evaluando " << argv[1] << endl;
+    cout << "Solucion inicial: " << initial << endl; 
+	ifstream in(argv[1]);
+
 	cin.rdbuf(in.rdbuf());
 	g = leer_grafo();
 	//beneficio_disp = g.maxbeneficio;
-	cout << "Beneficio " << beneficio_disp << endl; 
+	//cout << "Beneficio " << beneficio_disp << endl; 
 	sol_parcial = new solucion();
-	mejor_solucion = new solucion();
-	mejor_solucion->cargar_solucion("Instancias\\D1NoRPP-salida.txt");
+	//mejor_solucion = new solucion();
+	mejor_solucion.cargar_solucion(initial.c_str());
+
+	//sol_parcial->agregar(lado(1,3,1,10));
+	//sol_parcial->agregar(lado(3,5,1,10));
+	//sol_parcial->agregar(lado(5,10,1,10));
+	//cout << "Ciclo neg " << sol_parcial->repite_ciclo(lado(10,3,50,1)) << endl;
+
 	busqueda_en_profundidad();
+	cout << "Mejor solucion encontrada!" << endl;
+	mejor_solucion.print_recorrido();
+	/* Do your stuff here */
+    printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 	return 0;
 }
