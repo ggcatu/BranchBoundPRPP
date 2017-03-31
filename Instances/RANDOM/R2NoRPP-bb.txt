@@ -1,0 +1,83 @@
+Evaluando ./Instances\RANDOM\R2NoRPP
+Solucion inicial: ./Instances\RANDOM\R2NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 5138
+1  * -162
+6  * 382
+11  * 891
+13  * -474
+19  * -539
+8  * -181
+6  * -647
+14  * -155
+2  * 4568
+9  * -40
+16  * 4075
+20  * -673
+17  * -189
+9  * -623
+12  * -136
+10  * -959
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 5204
+1  * -162
+6  * 382
+11  * 891
+13  * -474
+19  * -539
+8  * -181
+6  * -647
+14  * -155
+2  * 4568
+9  * -40
+16  * 4075
+20  * -796
+9  * -623
+12  * -136
+10  * -959
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 5572
+1  * -162
+6  * 382
+11  * 891
+13  * -579
+8  * -181
+6  * -647
+14  * -155
+2  * 4568
+9  * -40
+16  * 4075
+20  * -673
+17  * -189
+9  * -623
+12  * -136
+10  * -959
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 5638
+1  * -162
+6  * 382
+11  * 891
+13  * -579
+8  * -181
+6  * -647
+14  * -155
+2  * 4568
+9  * -40
+16  * 4075
+20  * -796
+9  * -623
+12  * -136
+10  * -959
+1
+Mejor solucion encontrada!
+Beneficio: 5638
+d 6 11 13 8 6 14 2 9 16 20 9 12 10 d 
+Time taken: 0.23s

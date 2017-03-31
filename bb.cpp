@@ -15,7 +15,7 @@ grafo g;
 int i = 0;
 double tiempo = 0;
 clock_t tStart;
-#define TLIMIT 1200
+#define TLIMIT 7200
 
 
 int obtener_numero(ifstream& in){
@@ -83,7 +83,7 @@ void busqueda_en_profundidad(){
 	if (v == 1) {
 		//cout << "Comparando " << sol_parcial->beneficio << " y " << mejor_solucion->beneficio <<endl;
 		if (sol_parcial->beneficio > mejor_solucion.beneficio){
-			cout << "Nueva solucion parcial!" << endl;
+			cout << "Nueva solucion parcial! a los " << tiempo << "s" <<endl;
 			sol_parcial->print();
 			mejor_solucion = (*sol_parcial);
 		}

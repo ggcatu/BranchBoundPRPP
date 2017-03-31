@@ -1,0 +1,25 @@
+Evaluando ./Instances\RANDOM\R4NoRPP
+Solucion inicial: ./Instances\RANDOM\R4NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 17316
+1  * -128
+16  * 1873
+10  * -819
+7  * -115
+16  * 2947
+4  * -280
+2  * 4845
+3  * -234
+8  * -109
+6  * 4146
+18  * 6314
+15  * -315
+19  * -320
+2  * -489
+1
+Mejor solucion encontrada!
+Beneficio: 17316
+d 16 10 7 16 4 2 3 8 6 18 15 19 2 d 
+Time taken: 3.72s

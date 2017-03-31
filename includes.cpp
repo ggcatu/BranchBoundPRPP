@@ -157,6 +157,9 @@ public:
 
 	lado * ciclo(lado e){
 		int tmp = 0;
+		if (e.vertex == 1){
+			tmp++;
+		}
 		for (std::vector<lado>::iterator i = camino.begin(); i != camino.end(); ++i){
 			if( (*i).vertex == e.vertex ) {
 				tmp++;

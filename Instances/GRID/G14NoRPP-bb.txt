@@ -1,0 +1,3 @@
+Evaluando ./Instances\GRID\G14NoRPP
+Solucion inicial: ./Instances\GRID\G14NoRPP-salida.txt
+

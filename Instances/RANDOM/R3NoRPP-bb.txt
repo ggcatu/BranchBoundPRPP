@@ -1,0 +1,163 @@
+Evaluando ./Instances\RANDOM\R3NoRPP
+Solucion inicial: ./Instances\RANDOM\R3NoRPP-salida.txt
+
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 17409
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -220
+16  * -422
+3  * -130
+10  * -1091
+9  * 3246
+13  * -842
+11  * -886
+12  * -644
+15  * -31
+6  * 5890
+8  * -386
+7  * 456
+6  * -494
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 17629
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -220
+16  * -422
+3  * -130
+10  * -1091
+9  * 3246
+13  * -842
+11  * -886
+12  * -690
+17  * -158
+8  * 5890
+6  * -31
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 17705
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -220
+16  * -422
+3  * -925
+9  * 3246
+13  * -842
+11  * -886
+12  * -644
+15  * -31
+6  * 5890
+8  * -386
+7  * 456
+6  * -494
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 17925
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -220
+16  * -422
+3  * -925
+9  * 3246
+13  * -842
+11  * -886
+12  * -690
+17  * -158
+8  * 5890
+6  * -31
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 17994
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -1009
+13  * 3246
+9  * -1111
+11  * -886
+12  * -644
+15  * -31
+6  * 5890
+8  * -386
+7  * 456
+6  * -494
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 18214
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -1009
+13  * 3246
+9  * -1111
+11  * -886
+12  * -690
+17  * -158
+8  * 5890
+6  * -31
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 18233
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -1039
+9  * 3246
+13  * -842
+11  * -886
+12  * -644
+15  * -31
+6  * 5890
+8  * -386
+7  * 456
+6  * -494
+15  * -324
+1
+Nueva solucion parcial!
+Imprimiendo solucion: 
+Beneficio: 18453
+1  * 8295
+19  * -279
+3  * 3412
+18  * 1859
+5  * -1039
+9  * 3246
+13  * -842
+11  * -886
+12  * -690
+17  * -158
+8  * 5890
+6  * -31
+15  * -324
+1
+Beneficio: 9560
+d 10 3 16 5 18 3 19 d 15 20 6 7 8 
+Mejor solucion encontrada!
+Beneficio: 18453
+d 19 3 18 5 9 13 11 12 17 8 6 15 d 
+Time taken: 13.29s
