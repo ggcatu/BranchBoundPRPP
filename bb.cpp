@@ -106,27 +106,41 @@ void busqueda_en_profundidad(){
 	}
 	lado e = sol_parcial->eliminarUL();
 	beneficio_disp += max(0, e.win - e.costo);
-	delete(&e);
 }
 
+void llamadaJava(string directorio, string archivo){
+	cout << "Calculando heuristica greedy." << endl;
+	string cmdf = string("java -classpath ")+directorio+string(" Project ")+string( archivo);
+	system(cmdf.c_str());
+}
+
+void change_cout(string outfile){
+	freopen(outfile.c_str(),"w",stdout);
+   //ofstream out(outfile.c_str());
+   // cout.rdbuf(out.rdbuf());
+}
 
 int main(int argc, char const *argv[])
 {	
     if (! (argc > 1 )) return 1;
  	tStart = clock();
     string instance(argv[1]);
+    string out_file(instance + string("-bb.txt"));
+    change_cout(out_file);
+
+    cout << "Procediendo a Branch and Bound." << endl;
+    llamadaJava(string("Greedy"), instance);
+
     string initial(instance + string("-salida.txt"));
     cout << "Evaluando " << argv[1] << endl;
     cout << "Solucion inicial: " << initial << endl; 
 
-	//streambuf *cinbuf = std::cin.rdbuf(); //save old buf
 	ifstream in(argv[1]);
-	//cin.rdbuf(in.rdbuf());
 	ifstream in_sol(initial.c_str());
 	g = leer_grafo(in);
 	sol_parcial = new solucion();
 	mejor_solucion.cargar_solucion(in_sol);
-	//cin.rdbuf(cinbuf);   //reset to standard input again
+
 
 	busqueda_en_profundidad();
 

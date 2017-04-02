@@ -1,0 +1,56 @@
+Procediendo a Branch and Bound.Calculando heuristica greedy.
+
+Best cycle found:
+
+d 3 11 2 4 14 15 8 7 5 d 
+
+Best overall reward: 76
+
+Time elapsed: 25 milliseconds
+
+Generating output file "Instancias/D1NoRPP-salida.txt"
+
+Successfully generated output file "Instancias/D1NoRPP-salida.txt"
+
+Evaluando Instancias/D1NoRPP
+Solucion inicial: Instancias/D1NoRPP-salida.txt
+
+Nueva solucion parcial! a los 0.103s
+Imprimiendo solucion: 
+Beneficio: 109
+1  * -28
+3  * -12
+11  * -5
+2  * 68
+4  * -27
+3  * -46
+14  * 97
+15  * 22
+13  * -28
+7  * 82
+8  * 41
+6  * -2
+7  * 5
+5  * -58
+1
+Nueva solucion parcial! a los 0.139s
+Imprimiendo solucion: 
+Beneficio: 115
+1  * -28
+3  * -12
+11  * -5
+2  * 68
+4  * -67
+14  * 97
+15  * 22
+13  * -28
+7  * 82
+8  * 41
+6  * -2
+7  * 5
+5  * -58
+1
+Mejor solucion encontrada!
+Beneficio: 115
+d 3 11 2 4 14 15 13 7 8 6 7 5 d 
+Time taken: 0.95s
